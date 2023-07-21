@@ -53,10 +53,7 @@ class ChartCell: UITableViewCell {
         super.awakeFromNib()
         initActiCollectionView()
 //        setupChartView()
-        
-      
-        
-        
+          
     }
     
     func setupChartView(actiIndex: Int) {

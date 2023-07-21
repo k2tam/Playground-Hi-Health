@@ -43,9 +43,7 @@ struct ActivitesChart: View {
         
        
     }
-    
-    
-    
+
    
     func formatDate(_ date: Date) -> String {
         let cal = Calendar.current

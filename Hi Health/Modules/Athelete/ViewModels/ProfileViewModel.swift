@@ -17,16 +17,21 @@ class ProfileViewModel {
 
     
     func fetchProfileTableData(completion: @escaping (_ profileTableData: ProfileTable) -> Void ) {
-        let athleteModel = TokenDataManager.shared.getTokens()?.athleteInfo
+        
+        guard let tokenExchange = TokenDataManager.shared.getTokens() else {
+            print("No token exchange data")
+            return
+        }
+        
+        let athleteModel = tokenExchange.athleteInfo
+        
         
         guard let athleteModel = athleteModel else {
-            
             print("No athlete model")
             return
         }
         
-        
-        let userInfoSection = ProfileSection(firstName: athleteModel.firstName!, lastName: athleteModel.lastName!, state: athleteModel.state!, country: athleteModel.country!, avatarUrlString: athleteModel.profileMedium!)
+        let userInfoSection = ProfileSection(firstName: athleteModel.firstName, lastName: athleteModel.lastName, state: athleteModel.state, country: athleteModel.country, avatarUrlString: athleteModel.profileMedium)
         
         
         APIActvity.shared.fetchAthleteGroupedActivitiesData { [self] groupedActivites in

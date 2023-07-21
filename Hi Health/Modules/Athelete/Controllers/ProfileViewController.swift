@@ -35,13 +35,9 @@ class ProfileViewController: UIViewController {
         
         profileVM = ProfileViewModel()
         
-        
-     
-
 
         profileVM.fetchProfileTableData {[weak self] profileTableData in
             self?.tableProfileData = profileTableData
-            
             
             DispatchQueue.main.async {
                 self?.profileTableView.reloadData()
@@ -110,14 +106,10 @@ extension ProfileViewController: UITableViewDataSource {
           
             return profileInfoSectionView
         case let .chart(chartSectionModel):
-            let chartSectionView = tableView.dequeueReusableCell(withIdentifier: K.Cells.chartCellId) as! ChartCell
-            
-            
-            
+            let chartSectionView = tableView.dequeueReusableCell(withIdentifier: K.Cells.chartCellId) as! ChartCell   
             
             chartSectionView.chartCellData = chartSectionModel
-            
-            
+ 
             
             return chartSectionView
             
