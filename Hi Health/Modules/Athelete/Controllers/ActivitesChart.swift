@@ -30,6 +30,7 @@ struct ActiChartModel: Identifiable {
     }
 }
 
+
 struct ActivitesChart: View {
     var activitiesList: [Activity]?
     
@@ -74,6 +75,7 @@ struct ActivitesChart: View {
                 x: .value("Day", formatDate(actiChartModel.createAt)),
                 y: .value("Distance", actiChartModel.amount/1000)
             )
+     
             
             
         }

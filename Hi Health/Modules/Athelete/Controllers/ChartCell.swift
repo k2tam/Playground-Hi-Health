@@ -56,12 +56,16 @@ class ChartCell: UITableViewCell {
           
     }
     
+    private var currentChartView: UIView?
+
     func setupChartView(actiIndex: Int) {
         let hostingController = UIHostingController(rootView: ActivitesChart(activities: groupedActivities?[actiIndex].ascOrderedActivites ?? []))
-        
+
         guard let chartDataView = hostingController.view else { return }
+
         
-        
+        currentChartView?.removeFromSuperview()
+
         contentView.addSubview(chartDataView)
 
         // Set the hostingController's view to match the chartView bounds
@@ -73,7 +77,8 @@ class ChartCell: UITableViewCell {
             hostingController.view.bottomAnchor.constraint(equalTo: chartView.bottomAnchor)
         ])
         
-      
+        currentChartView = hostingController.view
+
     }
     
 }
