@@ -33,11 +33,9 @@ class APIActvity {
             completion(nil)
             return
         }
-        
 
         
-        
-        var request = URLRequest(url: url)
+        let request = URLRequest(url: url)
         //Add required headers to fetch athelete data
 
         

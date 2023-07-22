@@ -11,7 +11,6 @@
 		0555D4A82A69639E004084DE /* ActivitesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555D4A72A69639E004084DE /* ActivitesChart.swift */; };
 		05E32A312A64E432007FAF34 /* ActiBtnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E32A2F2A64E432007FAF34 /* ActiBtnCell.swift */; };
 		05E32A322A64E432007FAF34 /* ActiBtnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E32A302A64E432007FAF34 /* ActiBtnCell.xib */; };
-		05E32A342A64F193007FAF34 /* ActivityChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E32A332A64F193007FAF34 /* ActivityChartView.swift */; };
 		05E32A372A653307007FAF34 /* APIActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E32A362A653307007FAF34 /* APIActivity.swift */; };
 		05E564092A60015100267FD8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E564082A60015100267FD8 /* Constants.swift */; };
 		05E564142A60E7E600267FD8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E564132A60E7E600267FD8 /* ProfileViewController.swift */; };
@@ -44,7 +43,6 @@
 		0555D4A72A69639E004084DE /* ActivitesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitesChart.swift; sourceTree = "<group>"; };
 		05E32A2F2A64E432007FAF34 /* ActiBtnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiBtnCell.swift; sourceTree = "<group>"; };
 		05E32A302A64E432007FAF34 /* ActiBtnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiBtnCell.xib; sourceTree = "<group>"; };
-		05E32A332A64F193007FAF34 /* ActivityChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityChartView.swift; sourceTree = "<group>"; };
 		05E32A362A653307007FAF34 /* APIActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIActivity.swift; sourceTree = "<group>"; };
 		05E564082A60015100267FD8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05E564132A60E7E600267FD8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 				05E564242A60F9FD00267FD8 /* ViewModels */,
 				05E5641B2A60F59000267FD8 /* ProfileTables Models */,
 				997767A72A6144CB004C9CC1 /* Models */,
-				05E32A332A64F193007FAF34 /* ActivityChartView.swift */,
 			);
 			path = Athelete;
 			sourceTree = "<group>";
@@ -464,7 +461,6 @@
 				05EA0E6E2A642CC100ACCDF6 /* ChartCell.swift in Sources */,
 				05EA0E672A64012B00ACCDF6 /* Utilites.swift in Sources */,
 				05E564162A60E89C00267FD8 /* Athlete.swift in Sources */,
-				05E32A342A64F193007FAF34 /* ActivityChartView.swift in Sources */,
 				05E92F152A5E993E00B6FFDE /* SceneDelegate.swift in Sources */,
 				050759FC2A6A87FC00A87E77 /* TokenDataManager.swift in Sources */,
 				0555D4A82A69639E004084DE /* ActivitesChart.swift in Sources */,

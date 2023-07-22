@@ -26,8 +26,6 @@ class APIAuthen {
     
     
     func didGetTokenExchanged(tokenExchange: TokenExchange) {
-
-    
         TokenDataManager.shared.saveData(tokenExchange: tokenExchange)
 
         DispatchQueue.main.async {
@@ -45,25 +43,40 @@ class APIAuthen {
         performRequestGetTokenExchange(url: url) { tokenExchange in
             
             TokenDataManager.shared.saveData(tokenExchange: tokenExchange)
-
         }
+        
+        checkLoginStatus()
     }
     
+    func checkLoginStatus() {
+        let expiresAtTimestamp: TimeInterval? = Double(TokenDataManager.shared.getTokenExpiresAt())
+        // Get the current timestamp
+        
+        let currentTimestamp = Date().timeIntervalSince1970
+        
+
+        // Compare the expiration timestamp with the current timestamp
+        if let expiresAtTimestamp = expiresAtTimestamp {
+            if expiresAtTimestamp < currentTimestamp {
+                getNewTokenExchange(refreshToken: String(TokenDataManager.shared.getRefreshToken()))
+               
+            } else {
+                delegate?.didSuccessAuthorized()
+
+            }
+        }
+    }
    
     
     func authorize(viewController: UIViewController) {
-        
-        
         let appOAuthUrlStravaSchemeString =  "strava://oauth/mobile/authorize?client_id=\(clientID)&redirect_uri=\(redirectUri)&response_type=code&approval_prompt=auto&scope=\(scope)&state=test"
         
         let webOAuthUrlString =  "https://www.strava.com/oauth/mobile/authorize?client_id=\(clientID)&redirect_uri=\(redirectUri)&response_type=code&approval_prompt=auto&scope=\(scope)&state=test"
-        
     
         guard let appOAuthUrlStravaScheme = URL(string: appOAuthUrlStravaSchemeString) else { return }
         guard let webOAuthUrl = URL(string: webOAuthUrlString) else {return}
         
-        
-        
+
         ///Authorize with app
         if(UIApplication.shared.canOpenURL(appOAuthUrlStravaScheme)){
             UIApplication.shared.open(appOAuthUrlStravaScheme, options: [:])
@@ -171,7 +184,6 @@ extension APIAuthen {
         return TokenExchange(from: json)
         
     }
-
     
     func extractAuthorizationCode(from url: URL) -> String? {
         if let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems {

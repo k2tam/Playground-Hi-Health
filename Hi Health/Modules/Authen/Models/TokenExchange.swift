@@ -16,7 +16,7 @@ struct TokenExchange: Codable {
     let athleteId: Int?
     let athleteInfo: Athlete?
     
-    init(refreshToken: String, accessToken: String, expiresAt: Int, athleteId: Int, athleteInfo: Athlete) {
+    init(refreshToken: String?, accessToken: String?, expiresAt: Int?, athleteId: Int?, athleteInfo: Athlete?) {
         self.refreshToken = refreshToken
         self.accessToken = accessToken
         self.expiresAt = expiresAt

@@ -7,6 +7,7 @@
 
 import UIKit
 import AuthenticationServices
+import Foundation
 
 
 class ViewController: UIViewController {
@@ -18,6 +19,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         apiAuthen.delegate = self
+        
+        apiAuthen.checkLoginStatus()
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleURLCode(_:)), name: Notification.Name("GetURLCode"), object: nil)
 
@@ -47,14 +50,6 @@ extension ViewController: APIServiceDelegate {
     func didSuccessAuthorized() {
         self.performSegue(withIdentifier: K.segueLoginToHome, sender: self)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if(segue.identifier == K.segueLoginToHome){
-//            let vc = segue.destination as! ProfileViewController
-//            
-//        }
-//    }
-    
     
 }
 

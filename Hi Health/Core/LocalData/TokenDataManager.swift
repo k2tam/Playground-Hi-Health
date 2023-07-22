@@ -8,48 +8,90 @@
 import Foundation
 
 class TokenDataManager {
-    
-    var athleteModel: Athlete!
+    let defaults = UserDefaults.standard
 
     static let shared = TokenDataManager()
 
 
     private init() {}
 
-    // UserDefault keys
-    private enum UserDefaultKeys {
-        static let athleteID = "AthleteID"
-        static let accessToken = "AccessToken"
-        static let refreshToken = "RefreshToken"
-        static let expiresAt = "ExpiresAt"
-    }
-
     // Save tokens to UserDefault
     func saveData(tokenExchange: TokenExchange) {
-        let defaults = UserDefaults.standard
-        defaults.set(tokenExchange.athleteId, forKey: UserDefaultKeys.athleteID)
-        defaults.set(tokenExchange.accessToken, forKey: UserDefaultKeys.accessToken)
-        defaults.set(tokenExchange.refreshToken, forKey: UserDefaultKeys.refreshToken)
-        defaults.set(tokenExchange.expiresAt, forKey: UserDefaultKeys.expiresAt)
+        defaults.set(tokenExchange.athleteId, forKey: K.UserDefaultKeys.athleteID)
+        defaults.set(tokenExchange.accessToken, forKey: K.UserDefaultKeys.accessToken)
+        defaults.set(tokenExchange.refreshToken, forKey: K.UserDefaultKeys.refreshToken)
+        defaults.set(tokenExchange.expiresAt, forKey: K.UserDefaultKeys.expiresAt)
         
-        athleteModel = tokenExchange.athleteInfo
+        
+//        self.athleteModel = tokenExchange.athleteInfo
+        
+        let encoder = JSONEncoder()
+        do {
+            let jsonData = try encoder.encode(tokenExchange.athleteInfo)
+            
+            defaults.set(jsonData, forKey: K.UserDefaultKeys.athleteModel)
+        } catch {
+            print("Error encoding athlete instance: \(error)")
+        }
 
     }
-
+    
+    func clearUserLocalData() {
+        defaults.removeObject(forKey: K.UserDefaultKeys.athleteID)
+        defaults.removeObject(forKey: K.UserDefaultKeys.accessToken)
+        defaults.removeObject(forKey: K.UserDefaultKeys.refreshToken)
+        defaults.removeObject(forKey: K.UserDefaultKeys.expiresAt)
+        defaults.removeObject(forKey: K.UserDefaultKeys.athleteModel)
+    }
+    
+    func getRefreshToken() -> Int {
+        return defaults.integer(forKey: K.UserDefaultKeys.refreshToken)
+    }
+    
+    
+    func getTokenExpiresAt() -> Int {
+        return defaults.integer(forKey: K.UserDefaultKeys.expiresAt)
+    }
+    
+    
 
     func getTokens() -> TokenExchange? {
         let defaults = UserDefaults.standard
         guard
-              let accessToken = defaults.string(forKey: UserDefaultKeys.accessToken),
-              let refreshToken = defaults.string(forKey: UserDefaultKeys.refreshToken)
+            let accessToken = defaults.string(forKey: K.UserDefaultKeys.accessToken),
+            let refreshToken = defaults.string(forKey: K.UserDefaultKeys.refreshToken)
         else {
             return nil
         }
         
-        let athleteId = defaults.integer(forKey: UserDefaultKeys.athleteID)
-        let expiresAt = defaults.integer(forKey: UserDefaultKeys.expiresAt)
+        let athleteId = defaults.integer(forKey: K.UserDefaultKeys.athleteID)
+        let expiresAt = defaults.integer(forKey: K.UserDefaultKeys.expiresAt)
+        
+        let athleteModel: Athlete?
 
-        return TokenExchange(refreshToken: refreshToken, accessToken: accessToken, expiresAt: expiresAt, athleteId: athleteId, athleteInfo: athleteModel)
+        if let athleteModelSaved = defaults.data(forKey: K.UserDefaultKeys.athleteModel) {
+            let decoder = JSONDecoder()
+            do {
+                let savedAthleteInstance = try decoder.decode(Athlete.self, from: athleteModelSaved)
+                // Now "savedAthleteInstance" contains the decoded Athlete instance
+                print(savedAthleteInstance) // You can use the saved instance as needed
+                athleteModel = savedAthleteInstance
+            } catch {
+                print("Error decoding athlete instance: \(error)")
+                athleteModel = nil // Initialize the optional with nil in case of decoding error
+            }
+        } else {
+            athleteModel = nil // Initialize the optional with nil if no data is saved in UserDefaults
+        }
+
+        // Use 'guard let' to ensure athleteModel is initialized before the return statement
+        guard let initializedAthleteModel = athleteModel else {
+            fatalError("Failed to initialize 'athleteModel'")
+        }
+        
+        
+
+        return TokenExchange(refreshToken: refreshToken, accessToken: accessToken, expiresAt: expiresAt, athleteId: athleteId, athleteInfo: initializedAthleteModel)
     }
 }
 

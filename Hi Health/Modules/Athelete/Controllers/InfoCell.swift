@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol InfoCellDelegate {
+    func signOutButtonTapped()
+}
+
 class InfoCell: UITableViewCell {
 
     @IBOutlet weak var avatarImgView: UIImageView!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    
+    var delegate: InfoCellDelegate?
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +27,10 @@ class InfoCell: UITableViewCell {
         
     }
 
+    @IBAction func signOutPressed(_ sender: UIButton) {
+        delegate?.signOutButtonTapped()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -8,9 +8,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-  
-    
-    
+
     @IBOutlet weak var profileTableView: UITableView!
     
 //    var profileVM: FakeProfileViewModel!
@@ -22,6 +20,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         initProfileVM()
         initProfileTalble()
@@ -42,7 +42,6 @@ class ProfileViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.profileTableView.reloadData()
 //                print(self?.tableProfileData.profileSections[1])
-
             }
 
         }
@@ -59,8 +58,6 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UITableViewDataSource {
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
 	        return tableProfileData.profileSections.count
     }
@@ -85,6 +82,7 @@ extension ProfileViewController: UITableViewDataSource {
             let profileInfoSectionView = tableView.dequeueReusableCell(withIdentifier: K.Cells.profileCellId) as! InfoCell
             profileInfoSectionView.displayNameLabel.text = profileSectionModel.profileNameDisplay
             profileInfoSectionView.locationLabel.text = profileSectionModel.userLocation
+            profileInfoSectionView.delegate = self
         
             let url = URL(string: profileSectionModel.avatarUrlString)
             
@@ -126,5 +124,14 @@ extension ProfileViewController: UITableViewDataSource {
 }
 
 extension ProfileViewController: UITableViewDelegate {
+    
+}
+
+extension ProfileViewController: InfoCellDelegate {
+    func signOutButtonTapped() {
+        TokenDataManager.shared.clearUserLocalData()
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     
 }
