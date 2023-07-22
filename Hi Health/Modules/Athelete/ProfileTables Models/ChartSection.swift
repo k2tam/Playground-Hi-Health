@@ -51,11 +51,11 @@ struct GroupedActivities {
         var groupedActivitiesDex: [String: [Activity]] = [:]
 
         for acti in activities{
-            if var group = groupedActivitiesDex[acti.activityType ?? ""] {
+            if var group = groupedActivitiesDex[acti.activityType ] {
                 group.append(acti)
-                groupedActivitiesDex[acti.activityType ?? ""] = group
+                groupedActivitiesDex[acti.activityType ] = group
             } else {
-                groupedActivitiesDex[acti.activityType ?? ""] = [acti]
+                groupedActivitiesDex[acti.activityType] = [acti]
             }
         }
 

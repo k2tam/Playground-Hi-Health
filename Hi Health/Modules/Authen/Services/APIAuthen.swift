@@ -49,14 +49,14 @@ class APIAuthen {
     }
     
     func checkLoginStatus() {
-        let expiresAtTimestamp: TimeInterval? = Double(TokenDataManager.shared.getTokenExpiresAt())
+        let expiresAtTimestamp: TimeInterval = Double(TokenDataManager.shared.getTokenExpiresAt())
         // Get the current timestamp
         
         let currentTimestamp = Date().timeIntervalSince1970
         
 
         // Compare the expiration timestamp with the current timestamp
-        if let expiresAtTimestamp = expiresAtTimestamp {
+        if  expiresAtTimestamp != 0 {
             if expiresAtTimestamp < currentTimestamp {
                 getNewTokenExchange(refreshToken: String(TokenDataManager.shared.getRefreshToken()))
                

@@ -13,17 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         
-        let expiresAtTimestamp: TimeInterval = Double(TokenDataManager.shared.getTokenExpiresAt())
-        // Get the current timestamp
-        
-        let currentTimestamp = Date().timeIntervalSince1970
-
-        // Compare the expiration timestamp with the current timestamp
-        if expiresAtTimestamp < currentTimestamp {
-           
-        } else {
-            print("Token is still valid.")
-        }
+    
         return true
     }
     

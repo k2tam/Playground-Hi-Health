@@ -48,6 +48,10 @@ class TokenDataManager {
         return defaults.integer(forKey: K.UserDefaultKeys.refreshToken)
     }
     
+    func getAccessToken() -> Int {
+        return defaults.integer(forKey: K.UserDefaultKeys.accessToken)
+    }
+    
     
     func getTokenExpiresAt() -> Int {
         return defaults.integer(forKey: K.UserDefaultKeys.expiresAt)
@@ -73,8 +77,6 @@ class TokenDataManager {
             let decoder = JSONDecoder()
             do {
                 let savedAthleteInstance = try decoder.decode(Athlete.self, from: athleteModelSaved)
-                // Now "savedAthleteInstance" contains the decoded Athlete instance
-                print(savedAthleteInstance) // You can use the saved instance as needed
                 athleteModel = savedAthleteInstance
             } catch {
                 print("Error decoding athlete instance: \(error)")

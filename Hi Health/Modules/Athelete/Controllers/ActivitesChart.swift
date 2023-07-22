@@ -71,11 +71,12 @@ struct ActivitesChart: View {
                 y: .value("Distance", actiChartModel.amount/1000)
             )
             
+            
             PointMark(
                 x: .value("Day", formatDate(actiChartModel.createAt)),
                 y: .value("Distance", actiChartModel.amount/1000)
             )
-     
+        
             
             
         }

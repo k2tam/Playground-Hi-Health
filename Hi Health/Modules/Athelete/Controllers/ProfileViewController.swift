@@ -129,8 +129,38 @@ extension ProfileViewController: UITableViewDelegate {
 
 extension ProfileViewController: InfoCellDelegate {
     func signOutButtonTapped() {
+        
+        performDeauthorizeRequest(accessToken: String(TokenDataManager.shared.getAccessToken()))
+
         TokenDataManager.shared.clearUserLocalData()
+        
+        
         navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
+    func performDeauthorizeRequest(accessToken: String) {
+        let urlString = "https://www.strava.com/oauth/deauthorize"
+        
+        let url = URL(string: urlString)
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        
+        let bodyParameters = "access_token=\(accessToken)"
+        request.httpBody = bodyParameters.data(using: .utf8)
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { _, response, error in
+            if let error = error {
+                print("Error: \(error)")
+                // Handle the error accordingly
+                return
+            }
+           
+        }
+        
+        task.resume()
     }
     
     
