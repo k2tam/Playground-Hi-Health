@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class TokenDataManager {
     let defaults = UserDefaults.standard
@@ -22,9 +23,9 @@ class TokenDataManager {
         defaults.set(tokenExchange.refreshToken, forKey: K.UserDefaultKeys.refreshToken)
         defaults.set(tokenExchange.expiresAt, forKey: K.UserDefaultKeys.expiresAt)
         
+
         
-//        self.athleteModel = tokenExchange.athleteInfo
-        
+        //Save json data of athelete model
         let encoder = JSONEncoder()
         do {
             let jsonData = try encoder.encode(tokenExchange.athleteInfo)
@@ -48,8 +49,13 @@ class TokenDataManager {
         return defaults.integer(forKey: K.UserDefaultKeys.refreshToken)
     }
     
-    func getAccessToken() -> Int {
-        return defaults.integer(forKey: K.UserDefaultKeys.accessToken)
+    func getAccessToken() -> String {
+        guard let accessToken = defaults.string(forKey: K.UserDefaultKeys.accessToken) else {
+            print("Failed get access Token")
+            return ""
+        }
+        
+        return accessToken
     }
     
     
@@ -57,20 +63,7 @@ class TokenDataManager {
         return defaults.integer(forKey: K.UserDefaultKeys.expiresAt)
     }
     
-    
-
-    func getTokens() -> TokenExchange? {
-        let defaults = UserDefaults.standard
-        guard
-            let accessToken = defaults.string(forKey: K.UserDefaultKeys.accessToken),
-            let refreshToken = defaults.string(forKey: K.UserDefaultKeys.refreshToken)
-        else {
-            return nil
-        }
-        
-        let athleteId = defaults.integer(forKey: K.UserDefaultKeys.athleteID)
-        let expiresAt = defaults.integer(forKey: K.UserDefaultKeys.expiresAt)
-        
+    func getAthleteModel() -> Athlete {
         let athleteModel: Athlete?
 
         if let athleteModelSaved = defaults.data(forKey: K.UserDefaultKeys.athleteModel) {
@@ -91,9 +84,55 @@ class TokenDataManager {
             fatalError("Failed to initialize 'athleteModel'")
         }
         
-        
-
-        return TokenExchange(refreshToken: refreshToken, accessToken: accessToken, expiresAt: expiresAt, athleteId: athleteId, athleteInfo: initializedAthleteModel)
+        return initializedAthleteModel
     }
+    
+    
+
 }
 
+
+
+
+
+
+
+
+
+
+//func getTokens() -> TokenExchange? {
+//    let defaults = UserDefaults.standard
+//    guard
+//        let accessToken = defaults.string(forKey: K.UserDefaultKeys.accessToken),
+//        let refreshToken = defaults.string(forKey: K.UserDefaultKeys.refreshToken)
+//    else {
+//        return nil
+//    }
+//
+//    let athleteId = defaults.integer(forKey: K.UserDefaultKeys.athleteID)
+//    let expiresAt = defaults.integer(forKey: K.UserDefaultKeys.expiresAt)
+//
+//    let athleteModel: Athlete?
+//
+//    if let athleteModelSaved = defaults.data(forKey: K.UserDefaultKeys.athleteModel) {
+//        let decoder = JSONDecoder()
+//        do {
+//            let savedAthleteInstance = try decoder.decode(Athlete.self, from: athleteModelSaved)
+//            athleteModel = savedAthleteInstance
+//        } catch {
+//            print("Error decoding athlete instance: \(error)")
+//            athleteModel = nil // Initialize the optional with nil in case of decoding error
+//        }
+//    } else {
+//        athleteModel = nil // Initialize the optional with nil if no data is saved in UserDefaults
+//    }
+//
+//    // Use 'guard let' to ensure athleteModel is initialized before the return statement
+//    guard let initializedAthleteModel = athleteModel else {
+//        fatalError("Failed to initialize 'athleteModel'")
+//    }
+//
+//
+//
+//    return TokenExchange(refreshToken: refreshToken, accessToken: accessToken, expiresAt: expiresAt, athleteId: athleteId, athleteInfo: initializedAthleteModel)
+//}

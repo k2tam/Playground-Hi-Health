@@ -8,7 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		050759FC2A6A87FC00A87E77 /* TokenDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050759FB2A6A87FC00A87E77 /* TokenDataManager.swift */; };
-		0555D4A82A69639E004084DE /* ActivitesChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555D4A72A69639E004084DE /* ActivitesChart.swift */; };
+		057319FA2A71055800AD2913 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057319F82A71055800AD2913 /* BarChart.swift */; };
+		057319FB2A71055800AD2913 /* BarChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 057319F92A71055800AD2913 /* BarChart.xib */; };
+		057319FD2A71255900AD2913 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057319FC2A71255900AD2913 /* ChartView.swift */; };
+		057319FF2A7125E400AD2913 /* ChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 057319FE2A7125E400AD2913 /* ChartView.xib */; };
+		05731A092A712B1E00AD2913 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05731A082A712B1E00AD2913 /* ChartViewModel.swift */; };
+		05731A0E2A72727900AD2913 /* SignOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05731A0C2A72727900AD2913 /* SignOutCell.swift */; };
+		05731A0F2A72727900AD2913 /* SignOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05731A0D2A72727900AD2913 /* SignOutCell.xib */; };
+		05731A182A73568C00AD2913 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05731A172A73568C00AD2913 /* APIManager.swift */; };
+		05731A1D2A7357AB00AD2913 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05731A1A2A7357AB00AD2913 /* StatusCode.swift */; };
+		05731A1F2A7357AB00AD2913 /* HiHealthStatusResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05731A1C2A7357AB00AD2913 /* HiHealthStatusResult.swift */; };
 		05E32A312A64E432007FAF34 /* ActiBtnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E32A2F2A64E432007FAF34 /* ActiBtnCell.swift */; };
 		05E32A322A64E432007FAF34 /* ActiBtnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05E32A302A64E432007FAF34 /* ActiBtnCell.xib */; };
 		05E32A372A653307007FAF34 /* APIActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E32A362A653307007FAF34 /* APIActivity.swift */; };
@@ -40,7 +49,16 @@
 
 /* Begin PBXFileReference section */
 		050759FB2A6A87FC00A87E77 /* TokenDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDataManager.swift; sourceTree = "<group>"; };
-		0555D4A72A69639E004084DE /* ActivitesChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitesChart.swift; sourceTree = "<group>"; };
+		057319F82A71055800AD2913 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		057319F92A71055800AD2913 /* BarChart.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChart.xib; sourceTree = "<group>"; };
+		057319FC2A71255900AD2913 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		057319FE2A7125E400AD2913 /* ChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartView.xib; sourceTree = "<group>"; };
+		05731A082A712B1E00AD2913 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		05731A0C2A72727900AD2913 /* SignOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutCell.swift; sourceTree = "<group>"; };
+		05731A0D2A72727900AD2913 /* SignOutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignOutCell.xib; sourceTree = "<group>"; };
+		05731A172A73568C00AD2913 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		05731A1A2A7357AB00AD2913 /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		05731A1C2A7357AB00AD2913 /* HiHealthStatusResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiHealthStatusResult.swift; sourceTree = "<group>"; };
 		05E32A2F2A64E432007FAF34 /* ActiBtnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiBtnCell.swift; sourceTree = "<group>"; };
 		05E32A302A64E432007FAF34 /* ActiBtnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiBtnCell.xib; sourceTree = "<group>"; };
 		05E32A362A653307007FAF34 /* APIActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIActivity.swift; sourceTree = "<group>"; };
@@ -94,6 +112,50 @@
 			path = LocalData;
 			sourceTree = "<group>";
 		};
+		05731A002A71285B00AD2913 /* ActivityChart */ = {
+			isa = PBXGroup;
+			children = (
+				05731A012A712A3200AD2913 /* Views */,
+				05731A052A712A7700AD2913 /* ViewModel */,
+			);
+			path = ActivityChart;
+			sourceTree = "<group>";
+		};
+		05731A012A712A3200AD2913 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				057319FC2A71255900AD2913 /* ChartView.swift */,
+				057319FE2A7125E400AD2913 /* ChartView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		05731A052A712A7700AD2913 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				05731A082A712B1E00AD2913 /* ChartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		05731A162A73568600AD2913 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				05731A172A73568C00AD2913 /* APIManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		05731A192A7357A000AD2913 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				05E564082A60015100267FD8 /* Constants.swift */,
+				05731A1C2A7357AB00AD2913 /* HiHealthStatusResult.swift */,
+				05731A1A2A7357AB00AD2913 /* StatusCode.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		05E32A352A6532A6007FAF34 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,9 +203,16 @@
 		05E5642C2A61581900267FD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				05E564332A615B2B00267FD8 /* InfoCell.swift */,
 				05E564182A60EEAE00267FD8 /* InfoCell.xib */,
 				05EA0E6D2A642CC100ACCDF6 /* ChartCell.xib */,
+				05EA0E6C2A642CC100ACCDF6 /* ChartCell.swift */,
 				05E32A302A64E432007FAF34 /* ActiBtnCell.xib */,
+				05E32A2F2A64E432007FAF34 /* ActiBtnCell.swift */,
+				057319F82A71055800AD2913 /* BarChart.swift */,
+				057319F92A71055800AD2913 /* BarChart.xib */,
+				05731A0C2A72727900AD2913 /* SignOutCell.swift */,
+				05731A0D2A72727900AD2913 /* SignOutCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,10 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				05E564132A60E7E600267FD8 /* ProfileViewController.swift */,
-				05E564332A615B2B00267FD8 /* InfoCell.swift */,
-				05EA0E6C2A642CC100ACCDF6 /* ChartCell.swift */,
-				05E32A2F2A64E432007FAF34 /* ActiBtnCell.swift */,
-				0555D4A72A69639E004084DE /* ActivitesChart.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,8 +291,9 @@
 		9977679F2A613DB1004C9CC1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				05731A192A7357A000AD2913 /* Common */,
+				05731A162A73568600AD2913 /* Manager */,
 				050759FA2A6A87B400A87E77 /* LocalData */,
-				997767A22A613F3C004C9CC1 /* LocalData */,
 				997767A02A613DD6004C9CC1 /* TabBarHome */,
 				997767A12A613DEF004C9CC1 /* Base */,
 			);
@@ -251,13 +317,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		997767A22A613F3C004C9CC1 /* LocalData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LocalData;
-			sourceTree = "<group>";
-		};
 		997767A32A613F55004C9CC1 /* Authen */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,7 +324,6 @@
 				05E92F292A5EB81A00B6FFDE /* Models */,
 				05E564122A60E7AE00267FD8 /* Controllers */,
 				997767A82A614507004C9CC1 /* Models */,
-				05E564082A60015100267FD8 /* Constants.swift */,
 				05E92F262A5EABFC00B6FFDE /* Services */,
 			);
 			path = Authen;
@@ -274,6 +332,7 @@
 		997767A42A61425B004C9CC1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				05731A002A71285B00AD2913 /* ActivityChart */,
 				997767A62A6144B8004C9CC1 /* Athelete */,
 				997767A32A613F55004C9CC1 /* Authen */,
 			);
@@ -386,8 +445,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057319FB2A71055800AD2913 /* BarChart.xib in Resources */,
+				05731A0F2A72727900AD2913 /* SignOutCell.xib in Resources */,
 				05EA0E6F2A642CC100ACCDF6 /* ChartCell.xib in Resources */,
 				05E92F1F2A5E993F00B6FFDE /* LaunchScreen.storyboard in Resources */,
+				057319FF2A7125E400AD2913 /* ChartView.xib in Resources */,
 				05E5641A2A60EEAE00267FD8 /* InfoCell.xib in Resources */,
 				05E92F1C2A5E993F00B6FFDE /* Assets.xcassets in Resources */,
 				05E92F1A2A5E993E00B6FFDE /* Main.storyboard in Resources */,
@@ -451,21 +513,27 @@
 				05E32A372A653307007FAF34 /* APIActivity.swift in Sources */,
 				05E32A312A64E432007FAF34 /* ActiBtnCell.swift in Sources */,
 				05E564092A60015100267FD8 /* Constants.swift in Sources */,
+				05731A1F2A7357AB00AD2913 /* HiHealthStatusResult.swift in Sources */,
 				05E92F282A5EAC0900B6FFDE /* APIAuthen.swift in Sources */,
 				05E564232A60F73E00267FD8 /* ItemSection.swift in Sources */,
 				05E564142A60E7E600267FD8 /* ProfileViewController.swift in Sources */,
 				05E564292A6106B100267FD8 /* ProfileViewModel.swift in Sources */,
 				05EA0E652A63F87800ACCDF6 /* FakeProfileViewModel.swift in Sources */,
 				05E564212A60F73200267FD8 /* ChartSection.swift in Sources */,
+				05731A1D2A7357AB00AD2913 /* StatusCode.swift in Sources */,
 				05EA0E632A627BF900ACCDF6 /* ImageCacheProvider.swift in Sources */,
 				05EA0E6E2A642CC100ACCDF6 /* ChartCell.swift in Sources */,
 				05EA0E672A64012B00ACCDF6 /* Utilites.swift in Sources */,
 				05E564162A60E89C00267FD8 /* Athlete.swift in Sources */,
+				05731A0E2A72727900AD2913 /* SignOutCell.swift in Sources */,
 				05E92F152A5E993E00B6FFDE /* SceneDelegate.swift in Sources */,
+				05731A182A73568C00AD2913 /* APIManager.swift in Sources */,
 				050759FC2A6A87FC00A87E77 /* TokenDataManager.swift in Sources */,
-				0555D4A82A69639E004084DE /* ActivitesChart.swift in Sources */,
+				057319FA2A71055800AD2913 /* BarChart.swift in Sources */,
 				05E5641D2A60F5FD00267FD8 /* TableData.swift in Sources */,
 				05E564352A615B2B00267FD8 /* InfoCell.swift in Sources */,
+				057319FD2A71255900AD2913 /* ChartView.swift in Sources */,
+				05731A092A712B1E00AD2913 /* ChartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

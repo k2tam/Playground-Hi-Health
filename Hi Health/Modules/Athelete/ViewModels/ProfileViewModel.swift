@@ -16,20 +16,20 @@ class ProfileViewModel {
     var groupedActivites: GroupedActivities?
 
     
+     func performSignOut() {
+         TokenDataManager.shared.clearUserLocalData()
+         APIAuthen.shared.performDeauthorizeRequest(accessToken: TokenDataManager.shared.getAccessToken())
+         
+    }
+
     func fetchProfileTableData(completion: @escaping (_ profileTableData: ProfileTable) -> Void ) {
+//
+//        guard let tokenExchange = TokenDataManager.shared.getTokens() else {
+//            print("No token exchange data")
+//            return
+//        }
         
-        guard let tokenExchange = TokenDataManager.shared.getTokens() else {
-            print("No token exchange data")
-            return
-        }
-        
-        let athleteModel = tokenExchange.athleteInfo
-        
-        
-        guard let athleteModel = athleteModel else {
-            print("No athlete model")
-            return
-        }
+        let athleteModel = TokenDataManager.shared.getAthleteModel()
         
         let userInfoSection = ProfileSection(firstName: athleteModel.firstName, lastName: athleteModel.lastName, state: athleteModel.state, country: athleteModel.country, avatarUrlString: athleteModel.profileMedium)
         
@@ -41,22 +41,18 @@ class ProfileViewModel {
 
                 let chartDataSection = ChartSection(groupedActivies: groupedActivites.activites)
 
-                tableProfileData.profileSections = [ProfileSectionType.profile(userInfoSection),ProfileSectionType.chart(chartDataSection)]
+                tableProfileData.profileSections = [ProfileSectionType.profile(userInfoSection),ProfileSectionType.chart(chartDataSection),ProfileSectionType.signOutBtn]
                 completion(self.tableProfileData)
 
 
             }
         }
 
-
-        let chartDataSection = ChartSection(groupedActivies: [])
+//        let chartDataSection = ChartSection(groupedActivies: [])
         
+//        tableProfileData.profileSections = [ProfileSectionType.profile(userInfoSection),ProfileSectionType.chart(chartDataSection),ProfileSectionType.signOutBtn]
         
-        tableProfileData.profileSections = [ProfileSectionType.profile(userInfoSection),ProfileSectionType.chart(chartDataSection)]
-        
-
-        
-        completion(tableProfileData)
+//        completion(tableProfileData)
         
     }
    

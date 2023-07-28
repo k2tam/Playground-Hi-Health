@@ -19,11 +19,7 @@ class APIActvity {
         var groupedActivites: GroupedActivities?
         
         
-        guard let accessToken = TokenDataManager.shared.getTokens()?.accessToken else {
-            
-            print("No accessToken to fetch activity data")
-            return
-        }
+       let accessToken = TokenDataManager.shared.getAccessToken() 
 
         
         let urlString = "https://www.strava.com/api/v3/athlete/activities?access_token=\(accessToken)"

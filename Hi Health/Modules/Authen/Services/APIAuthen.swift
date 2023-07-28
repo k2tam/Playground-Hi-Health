@@ -15,6 +15,10 @@ protocol APIServiceDelegate {
 }
 
 class APIAuthen {
+    
+    static var shared: APIAuthen = APIAuthen()
+
+    
     let clientID = "110470"
     let clientSecret = "d69b84d8f46f26a64415c905099741eaeeeb9ee0"
     let redirectUri = "myapp://developers.strava.com"
@@ -23,7 +27,30 @@ class APIAuthen {
     let defaults = UserDefaults.standard
     var delegate: APIServiceDelegate?
     
-    
+
+    public func performDeauthorizeRequest(accessToken: String) {
+        let urlString = "https://www.strava.com/oauth/deauthorize"
+
+        let url = URL(string: urlString)
+
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+
+        let bodyParameters = "access_token=\(accessToken)"
+        request.httpBody = bodyParameters.data(using: .utf8)
+
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { _, response, error in
+            if let error = error {
+                print("Error: \(error)")
+                // Handle the error accordingly
+                return
+            }
+
+        }
+
+        task.resume()
+    }
     
     func didGetTokenExchanged(tokenExchange: TokenExchange) {
         TokenDataManager.shared.saveData(tokenExchange: tokenExchange)
@@ -180,9 +207,9 @@ extension APIAuthen {
     
     func parseJsonAuthenData(from data: Data) -> TokenExchange {
         let json = JSON(data)
-        
+
         return TokenExchange(from: json)
-        
+
     }
     
     func extractAuthorizationCode(from url: URL) -> String? {

@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,36 +29,22 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iLN-JK-9i1" userLabel="User Info Stack">
-                                <rect key="frame" x="118" y="31.000000000000004" width="241" height="44.333333333333343"/>
+                                <rect key="frame" x="118" y="31.000000000000004" width="299" height="44.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="290-7T-xBU">
-                                        <rect key="frame" x="0.0" y="0.0" width="241" height="19.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="299" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAp-WD-GMM">
-                                        <rect key="frame" x="0.0" y="27.333333333333329" width="241" height="17"/>
+                                        <rect key="frame" x="0.0" y="27.333333333333329" width="299" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJO-tr-g4M">
-                                <rect key="frame" x="387" y="43" width="30" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="GpI-vj-w2r"/>
-                                    <constraint firstAttribute="height" constant="20" id="dzP-Zb-MvZ"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="rectangle.portrait.and.arrow.right" catalog="system" symbolScale="medium"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="signOutPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hp9-xr-bCe"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -79,7 +64,4 @@
             <point key="canvasLocation" x="-77.099236641221367" y="-5.6338028169014089"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="109"/>
-    </resources>
 </document>

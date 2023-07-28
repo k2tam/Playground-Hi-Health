@@ -14,28 +14,23 @@ class ProfileViewController: UIViewController {
 //    var profileVM: FakeProfileViewModel!
     var profileVM: ProfileViewModel!
 
-    
     var tableProfileData: ProfileTable!
     var groupedActivites: [SpecificActivity]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         initProfileVM()
         initProfileTalble()
-        
-        
+          
     }
     
     func initProfileVM() {
         
-//                profileVM = FakeProfileViewModel()
+//      profileVM = FakeProfileViewModel()
         
         profileVM = ProfileViewModel()
         
-
         profileVM.fetchProfileTableData {[weak self] profileTableData in
             self?.tableProfileData = profileTableData
             
@@ -53,13 +48,20 @@ class ProfileViewController: UIViewController {
             
         profileTableView.register(UINib(nibName: K.Cells.profileCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.profileCellId)
         profileTableView.register(UINib(nibName: K.Cells.chartCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.chartCellId)
+        profileTableView.register(UINib(nibName: K.Cells.signOutBtnCellNibName, bundle: nil), forCellReuseIdentifier: K.Cells.signOutCellId)
+       
     }
     
 }
 
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-	        return tableProfileData.profileSections.count
+     
+        guard let profileData = tableProfileData else {
+            return 0
+        }
+        
+        return tableProfileData.profileSections.count
     }
     
     
@@ -82,7 +84,6 @@ extension ProfileViewController: UITableViewDataSource {
             let profileInfoSectionView = tableView.dequeueReusableCell(withIdentifier: K.Cells.profileCellId) as! InfoCell
             profileInfoSectionView.displayNameLabel.text = profileSectionModel.profileNameDisplay
             profileInfoSectionView.locationLabel.text = profileSectionModel.userLocation
-            profileInfoSectionView.delegate = self
         
             let url = URL(string: profileSectionModel.avatarUrlString)
             
@@ -110,6 +111,16 @@ extension ProfileViewController: UITableViewDataSource {
  
             
             return chartSectionView
+        case .signOutBtn:
+            let signOutView = tableView.dequeueReusableCell(withIdentifier: K.Cells.signOutCellId) as! SignOutCell
+                
+//            signOutView.callBack = { [weak self] in
+//                self?.profileVM.performSignOut()
+//            }
+            
+            signOutView.delegate = self
+            
+            return signOutView
             
         default:
             return tableView.dequeueReusableCell(withIdentifier: K.Cells.profileCellId)
@@ -128,9 +139,10 @@ extension ProfileViewController: UITableViewDelegate {
 }
 
 extension ProfileViewController: InfoCellDelegate {
+    
     func signOutButtonTapped() {
         
-        performDeauthorizeRequest(accessToken: String(TokenDataManager.shared.getAccessToken()))
+//        performDeauthorizeRequest(accessToken: TokenDataManager.shared.getAccessToken())
 
         TokenDataManager.shared.clearUserLocalData()
         
@@ -139,7 +151,7 @@ extension ProfileViewController: InfoCellDelegate {
         
     }
     
-    func performDeauthorizeRequest(accessToken: String) {
+    public func performDeauthorizeRequest(accessToken: String) {
         let urlString = "https://www.strava.com/oauth/deauthorize"
         
         let url = URL(string: urlString)
@@ -162,6 +174,15 @@ extension ProfileViewController: InfoCellDelegate {
         
         task.resume()
     }
-    
-    
+
+}
+
+extension ProfileViewController: SignOutCellDelegate {
+    func didPressSignOut() {
+        self.profileVM.performSignOut()
+        if let navigationController = self.navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
+    }
+
 }
